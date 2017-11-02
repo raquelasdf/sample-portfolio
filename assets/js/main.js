@@ -1,5 +1,5 @@
 /*
-	Stellar by HTML5 UP
+	Future Imperfect by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
@@ -7,18 +7,19 @@
 (function($) {
 
 	skel.breakpoints({
-		xlarge: '(max-width: 1680px)',
-		large: '(max-width: 1280px)',
-		medium: '(max-width: 980px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)',
-		xxsmall: '(max-width: 360px)'
+		xlarge:	'(max-width: 1680px)',
+		large:	'(max-width: 1280px)',
+		medium:	'(max-width: 980px)',
+		small:	'(max-width: 736px)',
+		xsmall:	'(max-width: 480px)'
 	});
 
 	$(function() {
 
 		var	$window = $(window),
 			$body = $('body'),
+			$menu = $('#menu'),
+			$sidebar = $('#sidebar'),
 			$main = $('#main');
 
 		// Disable animations/transitions until the page has loaded.
@@ -41,98 +42,73 @@
 				);
 			});
 
-		// Nav.
-			var $nav = $('#nav');
+		// IE<=9: Reverse order of main and sidebar.
+			if (skel.vars.IEVersion <= 9)
+				$main.insertAfter($sidebar);
 
-			if ($nav.length > 0) {
+		// Menu.
+			$menu
+				.appendTo($body)
+				.panel({
+					delay: 500,
+					hideOnClick: true,
+					hideOnSwipe: true,
+					resetScroll: true,
+					resetForms: true,
+					side: 'right',
+					target: $body,
+					visibleClass: 'is-menu-visible'
+				});
 
-				// Shrink effect.
-					$main
-						.scrollex({
-							mode: 'top',
-							enter: function() {
-								$nav.addClass('alt');
-							},
-							leave: function() {
-								$nav.removeClass('alt');
-							},
-						});
+		// Search (header).
+			var $search = $('#search'),
+				$search_input = $search.find('input');
 
-				// Links.
-					var $nav_a = $nav.find('a');
+			$body
+				.on('click', '[href="#search"]', function(event) {
 
-					$nav_a
-						.scrolly({
-							speed: 1000,
-							offset: function() { return $nav.height(); }
-						})
-						.on('click', function() {
+					event.preventDefault();
 
-							var $this = $(this);
+					// Not visible?
+						if (!$search.hasClass('visible')) {
 
-							// External link? Bail.
-								if ($this.attr('href').charAt(0) != '#')
-									return;
+							// Reset form.
+								$search[0].reset();
 
-							// Deactivate all links.
-								$nav_a
-									.removeClass('active')
-									.removeClass('active-locked');
+							// Show.
+								$search.addClass('visible');
 
-							// Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
-								$this
-									.addClass('active')
-									.addClass('active-locked');
+							// Focus input.
+								$search_input.focus();
 
-						})
-						.each(function() {
+						}
 
-							var	$this = $(this),
-								id = $this.attr('href'),
-								$section = $(id);
+				});
 
-							// No section for this link? Bail.
-								if ($section.length < 1)
-									return;
+			$search_input
+				.on('keydown', function(event) {
 
-							// Scrollex.
-								$section.scrollex({
-									mode: 'middle',
-									initialize: function() {
+					if (event.keyCode == 27)
+						$search_input.blur();
 
-										// Deactivate section.
-											if (skel.canUse('transition'))
-												$section.addClass('inactive');
+				})
+				.on('blur', function() {
+					window.setTimeout(function() {
+						$search.removeClass('visible');
+					}, 100);
+				});
 
-									},
-									enter: function() {
+		// Intro.
+			var $intro = $('#intro');
 
-										// Activate section.
-											$section.removeClass('inactive');
-
-										// No locked links? Deactivate all links and activate this section's one.
-											if ($nav_a.filter('.active-locked').length == 0) {
-
-												$nav_a.removeClass('active');
-												$this.addClass('active');
-
-											}
-
-										// Otherwise, if this section's link is the one that's locked, unlock it.
-											else if ($this.hasClass('active-locked'))
-												$this.removeClass('active-locked');
-
-									}
-								});
-
-						});
-
-			}
-
-		// Scrolly.
-			$('.scrolly').scrolly({
-				speed: 1000
-			});
+			// Move to main on <=large, back to sidebar on >large.
+				skel
+					.on('+large', function() {
+						$intro.prependTo($main);
+					})
+					.on('-large', function() {
+						$intro.prependTo($sidebar);
+					});
 
 	});
 

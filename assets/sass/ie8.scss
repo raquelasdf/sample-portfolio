@@ -4,80 +4,82 @@
 @import 'libs/skel';
 
 /*
-	Stellar by HTML5 UP
+	Future Imperfect by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-/* Type */
-
-	body {
-		color: _palette(fg-bold);
-	}
+$palette-border: #dedede;
 
 /* Button */
 
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button,
 	.button {
-		position: relative;
-		border: solid 1px !important;
+		border: solid 1px $palette-border;
+	}
 
-		&.special {
-			border: none !important;
+/* Form */
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="tel"],
+	select,
+	textarea {
+		border: solid 1px $palette-border;
+	}
+
+/* Post */
+
+	.post {
+		border: solid 1px $palette-border;
+
+		> header {
+			border-bottom: solid 1px $palette-border;
 		}
 	}
 
-/* Icon */
+/* Mini Post */
 
-	.icon {
-		&.major {
-			-ms-behavior: url('assets/js/ie/PIE.htc');
+	.mini-post {
+		border: solid 1px $palette-border;
+	}
 
-			&:before {
-				font-size: 4em;
-				border: 0;
+/* Header */
+
+	#header {
+		border-bottom: solid 1px $palette-border;
+
+		.links {
+			border-left: solid 1px $palette-border;
+		}
+
+		.main {
+			ul {
+				li {
+					border-left: solid 1px $palette-border;
+				}
 			}
 		}
 	}
 
-/* Spotlight */
+/* Sidebar */
 
-	.spotlight {
-		.image {
-			position: relative;
-			-ms-behavior: url('assets/js/ie/PIE.htc');
-
-			img {
-				position: relative;
-				-ms-behavior: url('assets/js/ie/PIE.htc');
-			}
-		}
-	}
-
-/* Features */
-
-	.features {
-		li {
-			width: 29%;
-		}
-	}
-
-/* Footer */
-
-	#footer {
+	#sidebar {
 		> * {
-			width: 50%;
-			margin-left: 0;
+			border-top: solid 1px $palette-border;
 		}
 	}
 
-/* Main */
+/* Menu */
 
-	#main {
-		> .main {
-			> .image.main:first-child {
-				margin-top: 0;
-				margin-left: 0;
-				width: 100%;
-			}
+	#menu {
+		border-left: solid 1px $palette-border;
+
+		> * {
+			border-top: solid 1px $palette-border;
 		}
 	}

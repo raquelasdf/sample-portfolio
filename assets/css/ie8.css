@@ -1,66 +1,72 @@
 /*
-	Stellar by HTML5 UP
+	Future Imperfect by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-/* Type */
-
-	body {
-		color: #ffffff;
-	}
-
 /* Button */
 
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button,
 	.button {
-		position: relative;
-		border: solid 1px !important;
+		border: solid 1px #dedede;
 	}
 
-		.button.special {
-			border: none !important;
+/* Form */
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="tel"],
+	select,
+	textarea {
+		border: solid 1px #dedede;
+	}
+
+/* Post */
+
+	.post {
+		border: solid 1px #dedede;
+	}
+
+		.post > header {
+			border-bottom: solid 1px #dedede;
 		}
 
-/* Icon */
+/* Mini Post */
 
-	.icon.major {
-		-ms-behavior: url("assets/js/ie/PIE.htc");
+	.mini-post {
+		border: solid 1px #dedede;
 	}
 
-		.icon.major:before {
-			font-size: 4em;
-			border: 0;
+/* Header */
+
+	#header {
+		border-bottom: solid 1px #dedede;
+	}
+
+		#header .links {
+			border-left: solid 1px #dedede;
 		}
 
-/* Spotlight */
-
-	.spotlight .image {
-		position: relative;
-		-ms-behavior: url("assets/js/ie/PIE.htc");
-	}
-
-		.spotlight .image img {
-			position: relative;
-			-ms-behavior: url("assets/js/ie/PIE.htc");
+		#header .main ul li {
+			border-left: solid 1px #dedede;
 		}
 
-/* Features */
+/* Sidebar */
 
-	.features li {
-		width: 29%;
+	#sidebar > * {
+		border-top: solid 1px #dedede;
 	}
 
-/* Footer */
+/* Menu */
 
-	#footer > * {
-		width: 50%;
-		margin-left: 0;
+	#menu {
+		border-left: solid 1px #dedede;
 	}
 
-/* Main */
-
-	#main > .main > .image.main:first-child {
-		margin-top: 0;
-		margin-left: 0;
-		width: 100%;
-	}
+		#menu > * {
+			border-top: solid 1px #dedede;
+		}
