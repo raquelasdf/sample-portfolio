@@ -95,6 +95,9 @@
 .active, .dot:hover {
   background-color: #717171;
 }
+.active, .dot1:hover {
+  background-color: #717171;
+}
 
 /* Fading animation */
 .fade {
