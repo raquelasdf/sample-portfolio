@@ -52,7 +52,8 @@
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #ddd;
-  padding-top: 10px
+  padding-top: 10px;
+  color: blue;
 }
 
 /* Show the dropdown menu on hover */
